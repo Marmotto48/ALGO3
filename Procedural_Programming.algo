@@ -1,0 +1,94 @@
+// PROCEDURES TO FILL THE ARRAYS //
+
+PROCEDURE fill_vector1 (n: INTEGER; VAR arr1 : ARRAY_OF INTEGER[])
+VAR
+    VAR i := INTEGER;
+BEGIN
+    FOR (i :=0; i<n; i++) {
+        Write ("fill in the first vector case "i": ");
+        Read (arr1[i]);
+    }
+    END_FOR
+END
+
+PROCEDURE fill_vector2 (n: INTEGER; VAR arr2 : ARRAY_OF INTEGER[])
+VAR
+    VAR i := INTEGER;
+BEGIN
+    FOR (i :=0; i<n; i++) {
+        Write ("fill in the second vector case "i": ");
+        Read (arr2[i]);
+    }
+    END_FOR
+END
+
+
+
+//***********DOT PRODUCT WITH PROCEDURE****************//
+PROCEDURE dot_product_proce (arr1, arr2 : ARRAY_OF INTEGER[]; product: INTEGER)
+VAR
+    product := 0;
+    i, n :INTEGER; 
+BEGIN
+    FOR (i:=0; i<n; i++) {
+        product := product + ( arr1(i) * arr2(i) );
+    }
+    END_FOR
+END
+
+ALGORITHM algorithm_name
+VAR
+    product : INTEGER := 0;
+    vect1 : ARRAY_OF INTEGER[];
+    vect2 : ARRAY_OF INTEGER[];
+    n, i : INTEGER;
+BEGIN
+// arrays size
+    Write ("The size of the arrays: ")
+    Read (n);
+// insert numbers in vects
+    fill_vector1 (n, vect1);
+    fill_vector2 (n, vect2);
+    Write(vect1, vect2);
+    Write ("the dot product of the two vectors is: ")
+    dot_product_proce(vect1, vect2, product);
+    IF (product := 0) THEN
+        Write("The vectors are orthogonal");
+    ELSE
+        Write("The vectors are not orthogonal");
+    END_IF
+END
+
+
+//***********DOT PRODUCT WITH FUNCTION****************//
+FUNCTION dot_product_func (arr1, arr2 : ARRAY_OF INTEGER[]; product: INTEGER) : INTEGER
+VAR
+    product := 0;
+    i, n :INTEGER; 
+BEGIN
+     for (int i = 0; i < n; i++)
+        product = product + vect_A[i] * vect_B[i];
+    RETURN product ;
+END
+
+
+ALGORITHM algorithm_name
+VAR
+    product : INTEGER := 0;
+    vect1 : ARRAY_OF INTEGER[];
+    vect2 : ARRAY_OF INTEGER[];
+    n, i : INTEGER;
+BEGIN
+    Write ("The size of the arrays: ")
+    Read (n);
+    fill_vector1 (n, vect1);
+    fill_vector2 (n, vect2);
+    Write(vect1, vect2);
+    Write ("the dot product of the two vectors is: ")
+    product:= dot_product_func (v1,v2);
+    IF (product := 0) THEN
+        Write("The vectors are orthogonal");
+    ELSE
+        Write("The vectors are not orthogonal");
+    END_IF
+END
